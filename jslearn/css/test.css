@@ -1,0 +1,82 @@
+
+/* 选择标签 */
+body {
+    background-color: aquamarine;
+}
+
+
+h1 {
+    /** 字体颜色 */
+    color:orange;
+    /** 位置 */
+    text-align: center;
+    /* 字体类型 */
+    font-family:'Times New Roman', Times, serif;
+    /* 大小 */
+    font-size: 20px;
+}
+
+/* is选择 */
+#id_select
+{
+    color: coral;
+}
+
+/* class选择器 */
+div.class_select
+{
+    background-color:darkgreen;
+}
+
+/** 去除样式 */
+#none_decoration
+{
+    /** text-decoration用来加文字样式的 */
+    text-decoration:none
+}
+
+
+
+/* 可以对连接进行更多样式 */
+a:link
+{
+    color:chocolate; /*未访问 */
+}
+a:visited
+{
+    color: bisque; /*已访问*/
+}
+a:hover
+{
+    color: crimson;  /*鼠标移动到连接 */
+}
+a:active
+{
+    color: aliceblue; /*点击连接 */
+}
+
+
+/* 列表的样式 */
+ul.a
+{
+    list-style-type: circle;
+}
+
+div.ex
+{
+    width:220px;
+    padding:10px;
+    border:5px solid gray;
+    margin:0px;
+}
+
+/**分组选择 和嵌套选择 
+分组,下面是并列的
+h1,h2,p
+{
+}
+嵌套
+.marked p{}  给所有的class为marked下的p标签设置格式
+p.marked{}  给p标签class为marked的设置样式
+
+*/
