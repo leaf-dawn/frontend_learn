@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!--meta提供元数据，不显示在页面，但是会被解析-->
 <meta charset="utf-8">
+<style type="test/css"></style>
 <title>测试</title>
 </head>
 <body>
@@ -10,8 +12,81 @@
 <h2>二级标题</h2>
 
 <p>我的第一个段落。</p>
-<a href = "https://www.bilibili.com/">bilibili</a>
-<img src = "image/图片1.gif" width="258" height="39">
+<a href = "https://www.bilibili.com/">bilibili</a> <br/><!--换行-->
 
+
+<!--文本格式化-->
+
+<p><b>hello</b></p>
+<p><em>hello</em></p>
+<p><i>hello</i></p>
+<p><small>hello</small></p>
+<p><strong>hello</strong></p>
+<p><sub>hello</sub></p>
+<p><sub>hello</sub></p>
+<p><ins>hello</ins></p>
+<p><del>hello</del></p>
+
+<!--计算机输出标签-->
+<p><code>printf("sabi")</code></p>
+<p><kdd>键盘码？</kdd></p>
+<p><samp>diama</samp></p>
+<p><var>变量</var></p>
+<pre>预格式
+空格有用
+
+</pre>
+
+<!--内嵌css-->
+<p style="background-color:green;">这是一个段落。</p>
+
+
+<!--图片相关,alt当图片无法加载时，提示用户图片信息-->
+<img src = "img/图片1.gif" width="258" height="39" alt="一只猫"> <br/>
+<!--定义图像可点击区域-->
+<img src="img/图片1.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
+
+<map name="planetmap">
+  <area shape="rect" coords="0,0,82,126" href="sun.htm" alt="Sun">
+  <area shape="circle" coords="90,58,3" href="mercur.htm" alt="Mercury">
+  <area shape="circle" coords="124,58,8" href="venus.htm" alt="Venus">
+</map>
+
+
+<!--表格-->
+<table border="1">
+    <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+    </tr>
+    <tr>
+        <td>row 1, cell 1</td>
+        <td>row 1, cell 2</td>
+    </tr>
+    <tr>
+        <td>row 2, cell 1</td>
+        <td>row 2, cell 2</td>
+    </tr>
+</table>
+
+<!--列表-->
+<ol>
+    <li>第一列</li>
+    <li>第二列</li>
+</ol>
+
+<ul>
+    <li>第一列</li>
+    <li>第二列</li>
+</ul>
+
+<!--div区块，可以用来分区，span可以写文本-->
+<div>
+    <span>
+        文本内容
+
+        111
+    </span>
+</div>
 </body>
 </html>
