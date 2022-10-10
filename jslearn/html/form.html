@@ -1,0 +1,48 @@
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+</head>
+<body>
+
+    <!--表单，action提交后端接口，method请求方式-->
+    <form name="input" action="html_form_action.php" method="get">
+        First name: <input type="text" name="firstname"/><br/>
+        Last name: <input type="test" name="lastname"/><br/>
+        passwrod: <input type="password" name="pwd"/><br/>
+        <!--单选按钮-->
+        <input type="radio" name="sex" value="male"/>男<br/>
+        <input type="radio" name="sex" valu="female">女<br/>
+        <!--复选按钮-->
+        <input type="checkbox" name="vehicle" value="Bike"/>喜欢自行车<br/>
+        <input type="checkbox" name="vehicle" value="Char"/>喜欢小车<br/>
+        <!--提交按钮-->
+        <input type="submit" value="Submit"/>
+    </form>
+
+    <!-- 以下表单使用 GET 请求发送数据到当前的 URL，method 默认位 GET。 -->
+    <form>
+        <label>Name:
+        <!--autocomplete用于判断自动完成，如果是on，浏览器会根据之前输入，给提示-->
+        <input name="submitted-name" autocomplete="on">
+        </label>
+        <button>Save</button>
+    </form>
+    
+    <!-- 以下表单使用 POST 请求发送数据到当前的 URL。 -->
+    <form method="post">
+        <label>Name:
+        <input name="submitted-name" autocomplete="off">
+        </label>
+        <button>Save</button>
+    </form>
+    
+    <!-- 表单使用 fieldset, legend, 和 label 标签 -->
+    <form method="post">
+        <fieldset>
+        <legend>Title</legend>
+        <label><input type="radio" name="radio"> Select me</label>
+        </fieldset>
+    </form>
+</body>
+</html>
