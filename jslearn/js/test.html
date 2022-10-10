@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8">
+<script src="./jstest.js"></script>
+<title>js练习</title> 
+</head>
+<body>
+
+    <p id="demo">sb</p>
+    <script>
+        document.getElementById("demo").innerHTML = "js可以改变html内容"
+    </script>
+
+
+    <!--对于事件触发时，可以运行js-->
+    <img loading="lazy" id="myimage" onclick="changeImage()" src="./images/pic_bulboff.gif" width="100" height="180">
+
+    <!--写到控制台-->
+    <script>
+        a = 5;
+        b = 6;
+        console.log(a + b)
+    </script>
+</body>
+</html>
