@@ -6,6 +6,10 @@
 
 ## 大概的学习路线
 
-- js + css + html
-
-- react 
+- js + css + html 
+- es6
+- npm 包管理
+- babel js编译器
+- 前端模块化
+- webpack 打包工具
+- react
