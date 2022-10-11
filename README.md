@@ -7,6 +7,7 @@
 ## 大概的学习路线
 
 - js + css + html 
+- 简单学下nodejs
 - es6
 - npm 包管理
 - babel js编译器
