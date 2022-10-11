@@ -88,5 +88,27 @@
         console.log(+ "fzw")
     </script>
 
+    <!--练习正则-->
+    <script>
+        console.log("练习正则")
+        var str = "fzwww"
+        //返回匹配初始位置
+        console.log(str.search(/fzw*/i))
+    </script>
+
+    <!--练习异常-->
+    <script>
+        "use strict"  //启动严格模式
+        var x = "";
+        try {
+            if (x == "") {
+                throw "x为空"
+            }
+        } catch (err) {
+            console.log("抛出异常" + err)
+        } finally {
+            console.log("最后执行")
+        }
+    </script>
 </body>
 </html>
