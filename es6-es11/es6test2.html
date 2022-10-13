@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <!--symbol,表示独一无二的值-->
+    <script>
+        let s = Symbol();
+        let s2 = Symbol("fzw");
+        let s3 = Symbol.for("fzw");
+        //不能进行运算，对比，拼接等等
+        //可以解决命名冲突
+        console.log("可以安全地给对象添加方法==========")
+        let fzw = {
+            name: 'fzw',
+            up: function(){},
+            down: function(){},
+        }
+        let methods = {
+            up: Symbol(),
+            down: Symbol(),
+        }
+        fzw[methods.up] = function() {
+            
+        }
+        fzw[methods.down] = function() {
+
+        }
+        console.log(fzw);
+        console.log("symbol可以进行自定义类型检测==========");
+        class Person{
+            static [Symbol.hasInstance]() {
+                console.log("我被用来做类型检测了");
+            }
+        }
+        let o = {};
+        console.log(o instanceof Person);
+    </script>
+
+    <!--迭代器,如果实现了迭代器，就可以使用for-of进行遍历-->
+    <script>
+        console.log("迭代器==========")
+        const sb = ['sb1','sb2','sb3'];
+        //for-of获取的是value，for-in获取的是key
+        for (let v of sb) {
+            console.log(v);
+        }
+        console.log("自定义迭代器==========");
+        const banji = {
+            name: '终极一班',
+            stus: [
+                'xiaoming',
+                'xiaoning',
+                'xiaotian',
+            ],
+            [Symbol.iterator]() {
+                //索引变量
+                let index = 0;
+                let _this = this;
+                return {
+                    next: function() {
+                        if (index < _this.stus.length) {
+                            let resuolt =  {value: _this.stus[index], done: false};
+                            index++;
+                            return resuolt;
+                        } else {
+                            return {value: null, done:true};
+                        }
+                    }
+                }
+            }
+        }
+        for (let v of banji) {
+            console.log(v);
+        }
+    </script>
+
+    <!--生成器-->
+    <script>
+        console.log("生成器==========");
+        function * gen() {
+            console.log(111);
+            yield '第一段';
+            console.log(222);
+            let one = yield '第二段';
+            console.log(one);
+        }
+        let iterator = gen();
+        //通过next可以一段一段地调用
+        console.log(iterator.next());
+        console.log(iterator.next("ccc"));
+        //传入的ccc会作为传入给one
+        console.log(iterator.next());
+    </script>
+
+    <!--生成器函数应用-->
+    <script>
+        console.log("生成器应用==========");
+        function getUsers() {
+            setTimeout(()=>{
+                let data = '用户数据';
+                //调用next传入数据
+                iterator.next(data);
+            }, 1000);
+        }
+
+        function getOrsers() {
+            setTimeout(()=>{
+                let data = "订单数据";
+                iterator.next(data);
+            }, 1000);
+        }
+
+        function getGoods() {
+            setTimeout(()=>{
+                let data = '商品数据';
+                iterator.next(data);
+            }, 1000);
+        }
+
+        function * get() {
+            let users = yield getUsers();
+            console.log(users);
+            let orders = yield getOrsers();
+            console.log(orders);
+            let goods = yield getGoods();
+            console.log(goods);
+        }
+    </script>
+
+    <!--promise对象-->
+    <script>
+        console.log("promise对象练习==========");
+        const p = new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                //let data = "数据库中的用户对象"
+                //resolve(data);
+
+                let err = "数据读取失败";
+                reject(err);
+            }, 1000);
+        });
+
+        //调用promise对象的then方法
+        p.then(function(value){
+            console.log(value);
+        }, function(reason){
+            console.error(reason);
+        })
+    </script>
+
+    <!--promise应用-->
+    <script>
+        console.log("promise处理ajax请求==========");
+        const p2 = new Promise(function(resolve, reject) {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET","https://api.apiopen.top/getJoke");
+            xhr.send();
+            //绑定事件
+            xhr.onreadystatechange = function() {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    resolve(xhr.response);
+                } else {
+                    reject(xhr.status);
+                }
+            };
+        });
+        //回调函数返回的值会给到result
+        const result = p2.then(function(value) {
+            console.log(value);
+            /**
+             * 返回其他，result就是这个值 
+             */
+            return 123;
+        },function(reason){
+            console.error(reason);
+            /**
+             * 抛出错误，result是也错误的promise
+             */
+            throw "出错了！";
+        });
+        console.log(result);
+    </script>
+
+</body>
+</html>
