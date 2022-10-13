@@ -36,3 +36,6 @@ function test()
     //使用对象方法
     obj.alertName
 }
+
+//可以执行test，但是不要返回值
+void(test())

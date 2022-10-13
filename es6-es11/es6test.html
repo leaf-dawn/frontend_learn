@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!--变量-->
+    <script>
+        //声明变量
+        let a;
+        let b,c,d;
+        let e = 100;
+        let f = 512, g = 'iloveyou', h =[];
+        //快作用域
+        {
+            let f = 0;
+        }
+        //不存在变量提升
+        //不影响作用链
+    </script>
+
+    <!--常量-->
+    <script>
+        //常量申明一定要赋初值，一般使用大写
+        //快作用域
+        
+        const SCHOOL = "fzw";
+    </script>
+
+    <!--数组取值，对象解构-->
+    <script>
+        console.log("数组取值==========");
+        const F4 = ['fzw', 'fzw2','fzw3'];
+        let [fzw, fzw2,fzw3] = F4;
+        console.log(fzw);
+        console.log(fzw2);
+        console.log(fzw3);
+        console.log("对象解构==========");
+        const zhao = {
+            name: '赵本山',
+            age: 100,
+            xiaopin: function() {
+                console.log("我可以演小品");
+            }
+        }
+        let {name, age, xiaopin} = zhao;
+        console.log(name);
+        console.log(age);
+        console.log(xiaopin);
+    </script>
+
+    <!--新字符串声明-->
+    <script>
+        console.log("新的字符串声明==========")
+        let str = `nihao1
+        可以进行换行`
+        let lovest = 'sb';
+        let out = `你这个${lovest}`;
+        console.log(out);
+    </script>
+
+    <!--可以在打括号里直接写入变量和函数，作为对象的属性和方法-->
+    <script>
+        let name1 = 'fzw';
+        let change = function() {
+            console.log('我可以改变');
+        }
+        const fzw1 = {
+            name1,
+            change,
+            //方法的声明也简洁了
+            imporve() {
+                console.log("我可以提升");
+            }
+        }
+    </script>
+
+    <!--使用箭头定义函数-->
+    <script>
+        console.log("箭头方式定义函数==========")
+        let fn = (a,b) => {
+            return a + b;
+        }
+        //调用函数
+        let result = fn;
+        console.log(result);
+
+        //1.this是静态的，this始终指向函数声明所在作用域
+        console.log("检验箭头函数作用域==========")
+        function getName() {
+            console.log(this.name);
+        }
+        let getName2 = () =>{
+            console.log(this.name);
+        }
+        //设置window对象的name
+        window.name = "fzw";
+        const school = {
+            name: "fzw2",
+        }
+        getName();
+        getName2();
+        //call方法调用
+        getName.call(school);
+        getName2.call(school);  //作用域是静态的，call也无法改变
+
+        //2.不能作为构造实例化对象
+        // let Person = (name, age) => {
+        //     this.name = name;
+        //     this.age = age;
+        // }
+        // let me = new Persion('xiao',30);
+
+        //3.不能使用argument
+
+        //4.箭头函数的简写
+        console.log("省略小括号");
+        let add = n => {
+            return n + n;
+        }
+        console.log(add(9));
+        //5.可以省略花括号
+        console.log("省略花括号");
+        let add2 = n => n * n;
+        console.log(add2(9));
+
+        //6.箭头函数适合与this无关的回调，定时器，数组方法回调
+        //箭头函数不适合与this有关的回调，事件回调，对象方法
+    </script>
+
+
+    <!--可以给函数参数设置初始值,一般放后面-->
+    <script>
+        console.log("给函数设置初始值==========");
+        function add3(a, b, c=10) {
+            return a + b + c;
+        }
+        let resul = add3(1, 2);
+        console.log(resul);
+    </script>
+
+    <!--与结构函数结合-->
+    <script>
+        console.log("与解构函数结合==========");
+        function connect({host='127.0.0.1',username,password}) {
+            console.log(host);
+            console.log(username);
+            console.log(password);
+        }
+        connect({username:'root',password:'root'});
+    </script>
+
+    <!--rest参数取代arguments-->
+    <script>
+        //rest必须放到最后
+        console.log("rest传参==========")
+        function date(...args) {
+            console.log(args);
+        }
+        date("fzw","fzw2","fzw3");
+    </script>
+
+    <!--扩展运算符-->
+    <script>
+        console.log("扩展运算符==========");
+        const tfboys = ['fzw','fzw2','fzw3'];
+        function chunwan() {
+            console.log(arguments);
+        }
+        //可以把一个数组编程参数序列[a,b,c]=>a,b,c
+        chunwan(...tfboys);
+        //使用扩展运算符进行合并数组
+        const a1 = ['fzw','fzw2','fzw3'];
+        const a2 = ['fzw4','fzw5','fzw6'];
+        const a3 = [...a1, ...a2];
+        console.log(a3);
+    </script>
+
+</body>
+</html>
