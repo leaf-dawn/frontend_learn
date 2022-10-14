@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        //1. 通用导入方法
+        //把m1所有导入
+        console.log("通用导入方法===========");
+        import * as m1 from "./js/m1.js";
+        console.log(m1);
+        import * as m2 from "./js/m2.js";
+        console.log(m2);
+        import * as m3 from "./js/m3.js";
+        console.log(m3);
+        //2. 赋值形式
+        console.log("赋值形式暴露==========");
+        import {name, learn} from "./js/m1.js";
+        import {name as fzwname, learn as fzwlearn} from "./js/m2.js";
+        import {default as log} from "./js/m3.js";
+        console.log(name);
+        console.log(learn);
+        console.log(fzwname);
+        console.log(fzwlearn);
+        console.log(log);
+        //3.简便形式，只针对默认暴露
+        console.log("简便形式==========");
+        import mm from "./js/m3.js";
+        console.log(mm);
+    </script>
+</body>
+</html>
