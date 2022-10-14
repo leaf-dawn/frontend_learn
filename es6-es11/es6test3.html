@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-widh>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("set ==========")
+        let s = new Set();
+        let s2 = new Set(["fzw","fzw2","fzw3","fzw3"]);
+        console.log(s2);
+        console.log(s2.size);
+        //添加
+        s2.add("fzw4");
+        console.log(s2);
+        // //删除
+        // s2.delete("fzw2");
+        // console.log(s2);
+        // //检测
+        // console.log(s2.has("fzw10"));
+        // //清口
+        // s2.clear();
+        // console.log(s2);
+    </script>
+
+    <script>
+        console.log("map ==========");
+        let m = new Map();
+        //添加元素
+        m.set('name','fzw');
+        m.set("age", 23);
+        m.set('change', function(){
+            console.log("我可以改变");
+        });
+        console.log(m);
+        //删除
+        m.delete('change');
+        //获取
+        console.log(m.get("name"));
+        //遍历
+        for (let v of m) {
+            console.log(v);
+        }
+
+    </script>
+
+    <script>
+        console.log("class ==========");
+        //手机
+        console.log("测试es5")
+        function Phone(brand, price) {
+            this.brand = brand;
+            this.price = price;
+        }
+        //添加方法
+        //有构造器的对象，只能在原型里添加方法
+        Phone.prototype.call = function() {
+            console.log("我可以打电话");
+        }
+        let Huawei = new Phone("华为", 5999);
+        console.log(Huawei);
+
+        //class
+        console.log("测试es6");
+        class Phone2{
+            constructor(brand, price) {
+                this.brand = brand;
+                this.price = price;
+            }
+            //必须是使用简化语法,类中的方法最后都会加到prototype中去
+            call() {
+                console.log("我可以打电话");
+            }
+        }
+        let onePlus = new Phone2("1+", 1999);
+        console.log(onePlus);
+
+        //静态成员变量
+        console.log("测试静态成员")
+        function Phone3() {
+
+        }
+        Phone3.name = '手机';
+        Phone3.change = function() {
+            console.log("我可以改变世界");
+        }
+        Phone3.prototype.size = '5.5inch';
+        let nokia = new Phone3();
+        //name属于类，size属于对象
+        console.log(nokia.name);
+        console.log(nokia.size);
+
+        //class静态成员定义
+        class Phone4{
+            static name = '手机';
+            static change() {
+                console.log("我可以改变世界");
+            }
+        }
+
+    </script>
+        
+    <script>
+        console.log("构造函数继承==========");
+
+        function Phone5(brand, price)  {
+            this.brand = brand;
+            this.price = price;
+        }
+        Phone5.prototype.call = function() {
+            console.log("我可以打电话");
+        }
+
+        function SmartPhone(brand, price, color, size) {
+            //继承
+            Phone5.call(this, brand, price);
+            this.color = color;
+            this.size = size;
+        }
+        //设置子级构造函数的原型
+        SmartPhone.prototype = new Phone5;
+        //声明子类方法
+        SmartPhone.prototype.photo = function() {
+            console.log("我可以拍照");
+        }
+
+        const chuizi = new SmartPhone("锤子",2499,'黑色','5.5inch');
+        console.log(chuizi);
+    </script>
+    
+    <script>
+        console.log("class 继承==========");
+        class Phone6 {
+            constructor(brand, price) {
+                this.brand = brand;
+                this.price = price;
+            }
+            call() {
+                console.log("我可以打电话");
+            }
+        }
+        //子类继承
+        class SmartPhone2 extends Phone6 {
+            construct(brand, price, color, size) {
+                super(brand, price);
+                this.color = color;
+                this.size = size;
+            }
+            photo() {
+                console.log("拍照");
+            }
+        }
+        const xiaomi = new SmartPhone('小米', 799,'黑色', '4.7inch');
+        console.log(xiaomi);
+    </script>
+
+    <script>
+        console.log("class 的getter和setter ==========");
+        class Phone7 {
+            get price() {
+                console.log("价格属性被赋值了");
+            }
+            set price(newVal) {
+                console.log("价格被读取了");
+            }
+        }
+        let phone7 = new Phone7();
+        phone7.price = 'free';
+        phone7.price;
+
+    </script>
+
+    <script>
+        console.log()
+    </script>
+</body>
+</html>
