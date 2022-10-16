@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script type = "text/javascript" >
+    let number = 18
+    let person = {
+        name:'fzw',
+        sex:'男',
+    }
+    Object.defineProperty(person,'age',{
+        //value:18,
+        //enumberable:true, //控制属性是否可以枚举，默认false
+        //writable:true,   //控制属性是否可以被修改，默认false
+        //configurable:true, //控制属性是否可以被删除，默认false
+        get:function() {     //当有人读取age时，会别调用，这样的话，number就和age绑定了
+            return number
+        }
+    })
+</script>
+
+<!--数据代理：通过一个对象代理对另一个对象中属性的操作-->
+<script>
+    let obj = {x:100}
+    let obj2 = {y:200}
+    Object.defineProperty(obj2,'x',{
+        get(){
+            return obj.x
+        },
+        set(value){
+            obj.x = value
+        }
+    })
+</script>
+</body>
+</html>

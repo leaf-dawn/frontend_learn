@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--引入vue-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.7.10"></script>
+</head>
+<body>
+    <!--
+        js表达式：一个表达式会生成一个值，可以放到任何一个需要的地方s
+        (1).a
+        (2).a+b
+        (3).demo(1)
+        (4) x===y?'a':'b'
+    -->
+    <!--准备一个容器，容器内的代码，叫vue模板-->
+    <div id="root">
+        <!--插值语法-->
+        <h1>hello, {{name.toUpperCase()}},{{address}}</h1>
+        <!--指令语法-->
+        <a v-bind:href="url">点我去bilibili</a>
+    </div>
+
+     <script type="text/javascript">
+        Vue.config.productionTip = false //阻止vue在启动时生成生产提示
+        //创建vue实例，注意容器和实例一一对应
+        new Vue({
+            el:'#root',    //el用于指定当前vue实例为哪个容器服务，css选择器
+            data:{
+                name:'world',   //用于el指定的容器服务
+                address:'guangzhou',
+            },
+            url:"www.bilibili.com",
+        })
+     </script>
+
+</body>
+</html>

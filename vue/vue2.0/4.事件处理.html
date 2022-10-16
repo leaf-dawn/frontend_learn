@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.7.10"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <!--click-->
+    <div id="root">
+        <button v-on:click="showInfo">点我提示信息</button>
+        <button @click="showInfo2(66,$event)">点我提示信息</button>
+    </div>
+    
+    <script>
+        new Vue({
+            el:"#root",
+            methods:{
+                showInfo(event){
+                    console.log(event.target.innerText)
+                },
+                showInfo2(number,event){
+                    console.log(number)
+                }
+            }
+        })
+    </script>
+
+    <!--事件修饰符
+        1.prevent：阻止默认事件
+        2.stop：阻止事件冒泡
+        3.once：事件只触发一次
+        4.capture:使用事件捕获模式
+        5.self: 只有event.target是当前操作元素时才触发
+        6.passive：事件的默认行为立即执行，无需等待事件回调
+    -->
+    <div id="root2">
+        <h1>事件修饰符</h1>
+        <!--prevent-->
+        <a href="http://www.bilibili.com" @click.prevent="showInfo">点我提示信息</a>
+        <!--stop 阻止事件冒泡,如果不用的-->
+        <div class="demo1" @click="showInfo">
+            <button @click.stop="showInfo">点我提示信息</button>
+        </div>
+        <!--once-->
+        <button @click.once="showInfo">点我提示信息</button>
+        <!--capture-->
+        <div @click.capture="showMsg(1)">
+            div1
+            <div @click="showMsg(2)">
+                div2
+            </div>
+        </div>        
+    </div>
+
+    <script type="text/javascript">
+        new Vue({
+            el:'#root2',
+            methods:{
+                showInfo(){
+                    alert("提示信息")
+                },
+                showMsg(a){
+                    alert(a)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
