@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <!--async await-->
+  <script>
+    // 只要返回的不是一个promist对象，那么这个返回的就是一个promise对象
+    async function fn() {
+      //正常返回，返回的就是一个成功的promise
+      return 'fzw';
+      //如果抛出异常，返回的就是一个失败的promise
+    }
+    const result = fn();
+    console.log(result);
+  </script>
+</body>
+</html>
