@@ -19,5 +19,25 @@
     const result = fn();
     console.log(result);
   </script>
+
+  <!--await-->
+  <script>
+    //创建一个promist
+    const p = new Promise((resolve, reject)=>{
+      resolve("成功的值");
+    })
+    //await必须啊在async函数中
+    // await右侧一般是返回的是一个promise对象
+    // await返回的是promise成功的值
+    // await如果失败了，就会抛出异常
+    async function fu() {
+      try {
+        let result = await p
+        console.log(result)
+      } catch (e) {
+        console.log(e)
+      }
+    }    
+  </script>
 </body>
 </html>
